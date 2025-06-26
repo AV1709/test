@@ -40,13 +40,21 @@ function fetch_radio(name, value) {
         document.getElementById(name+"_notice_left").checked=false;
         document.getElementById(name+"_description").disabled=true;
         document.getElementById(name+"_description").value='';
+        document.getElementById(name+"m").title='disabled';
+        document.getElementById(name+"m").style.opacity='0.5';
         document.getElementById(String(Number(name)+1)+"_notice_right").checked=false;
         document.getElementById(String(Number(name)+1)+"_description").disabled=true;
         document.getElementById(String(Number(name)+1)+"_description").value='';
+        document.getElementById(String(Number(name)+1)+"m").title='disabled';
+        document.getElementById(String(Number(name)+1)+"m").style.opacity='0.5';
     } else if (value === "notice_left") {
         document.getElementById(name+"_description").disabled=false;
+        document.getElementById(name+"m").title='not_recording';
+        document.getElementById(name+"m").style.opacity='1';
     } else if (value === "notice_right") {
         document.getElementById(name+"_description").disabled=false;
+        document.getElementById(name+"m").title='not_recording';
+        document.getElementById(name+"m").style.opacity='1';
     }
 }
 
@@ -64,6 +72,8 @@ function fetch_checkbox(name, value) {
     })
 
     document.getElementById(name+"_description").disabled=false;
+    document.getElementById(name+"m").title='not_recording';
+        document.getElementById(name+"m").style.opacity='1';
     var regex = /\d+/g;
     var matches = name.match(regex);
     if (matches % 10 == 1) {
@@ -118,7 +128,7 @@ function load(data,out,file_path){
         }
     }
     if (file_path != "") {
-        document.getElementById("save-path").innerHTML = "Gespeichert unter: " + file_path;
+        document.getElementById("save-path").innerHTML = "<b>Gespeichert unter: " + file_path +'</b>';
     }
     update_demo(out)
 

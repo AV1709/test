@@ -21,9 +21,8 @@ def main():
 
     webview.settings["ALLOW_DOWNLOADS"] = True
     window = webview.create_window(
-        "Mehrstufendiagnostik von Muskel-Skelett-Erkrankungen", url="http://localhost:8080"
+        "Mehrstufendiagnostik von Muskel-Skelett-Erkrankungen", url="http://localhost:8080", text_select=True, zoomable=True
     )
-
     webview.start()
 
 

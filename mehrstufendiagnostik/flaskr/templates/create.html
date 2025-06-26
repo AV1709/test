@@ -1,19 +1,16 @@
 <!doctype html>
 <title xmlns="http://www.w3.org/1999/html">Mehrstufendiagnostik von Muskel-Skelett-Erkrankungen</title>
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> -->
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='font-awesome.min.css') }}">
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
 
 
 <section class="content">
   <header>
     <meta charset="UTF-8">
   </header>
-
-  {% for message in get_flashed_messages() %}
-  <div class="flash">{{ message }}</div>
-  {% endfor %}
 
   <body>
     <p id="save-path"></p>
@@ -29,7 +26,7 @@
       <tbody>
       <tr id="tr">
         <td class="titel" rowspan="8"></td>
-        <td class="titel">1 1 Gangbild, Hinken</td>
+        <td class="titel"> 1 Gangbild, Hinken</td>
         <td class="inhalt">
           <input type="radio" name="10" id="10_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -40,12 +37,12 @@
           <textarea name="10d" id="10_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled ></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="10m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="10m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">2 2 Schulter-Nacken-Asymmetrie</td>
+        <td class="titel"> 2 Schulter-Nacken-Asymmetrie</td>
         <td class="inhalt">
           <input type="radio" name="20" id="20_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -56,12 +53,12 @@
           <textarea  name="20d" id="20_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="20m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="20m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">3 3 Haltungsfehler/Skoliose</td>
+        <td class="titel"> 3 Haltungsfehler/Skoliose</td>
         <td class="inhalt">
           <input type="radio" name="30" id="30_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -72,12 +69,12 @@
           <textarea  name="30d" id="30_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="30m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="30m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">4 4 Beckenschiefstand</td>
+        <td class="titel"> 4 Beckenschiefstand</td>
         <td class="inhalt">
           <input type="radio" name="40" id="40_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -88,12 +85,12 @@
           <textarea  name="40d" id="40_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="40m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="40m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">5 5 Beinachsenfehler (Varus, Valgus)</td>
+        <td class="titel"> 5 Beinachsenfehler (Varus, Valgus)</td>
         <td class="inhalt">
           <input type="radio" name="50" id="50_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -104,12 +101,12 @@
           <textarea  name="50d" id="50_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="50m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="50m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">6 6 Fußdeformität (Fußgewölbe, Zehen)</td>
+        <td class="titel"> 6 Fußdeformität (Fußgewölbe, Zehen)</td>
         <td class="inhalt">
           <input type="radio" name="60" id="60_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -120,12 +117,12 @@
           <textarea  name="60d" id="60_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="60m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="60m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">7 7 Gelenkschwellungen</td>
+        <td class="titel"> 7 Gelenkschwellungen</td>
         <td class="inhalt">
           <input type="radio" name="70" id="70_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -136,12 +133,12 @@
           <textarea  name="70d" id="70_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="70m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="70m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">8 8 Narben, Finger-, Zehen oder Gliedmaßenverlust</td>
+        <td class="titel"> 8 Narben, Finger-, Zehen oder Gliedmaßenverlust</td>
         <td class="inhalt">
           <input type="radio" name="80" id="80_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -152,7 +149,7 @@
           <textarea  name="80d" id="80_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="80m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="80m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
       </tbody>
@@ -170,7 +167,7 @@
       <tbody>
       <tr>
         <td class="region">&nbsp; HWS</td>
-        <td class="titel">9 1 aktive/passive Beweglichkeit eingeschränkt</td>
+        <td class="titel"> 1 aktive/passive Beweglichkeit eingeschränkt</td>
         <td class="inhalt">
           <input type="radio" name="90" id="90_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -181,7 +178,7 @@
           <textarea  name="90d" id="90_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="90m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="90m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
       </tbody>
@@ -189,7 +186,7 @@
       <tbody>
       <tr>
         <td class="region">&nbsp; Schulterregion</td>
-        <td class="titel">10 2 Nackengriff/Schürzengriff eingeschränkt</td>
+        <td class="titel"> 2 Nackengriff/Schürzengriff eingeschränkt</td>
         <td class="inhalt">
           <input type="radio" name="100" id="100_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -200,7 +197,7 @@
           <textarea  name="100d" id="100_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="100m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="100m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
       </tbody>
@@ -208,7 +205,7 @@
       <tbody>
       <tr>
         <td class="region" rowspan="2">&nbsp; Ellenbogen</td>
-        <td class="titel">11 3 aktive/passive Gelenkbeweglichkeit eingeschränkt</td>
+        <td class="titel"> 3 aktive/passive Gelenkbeweglichkeit eingeschränkt</td>
         <td class="inhalt">
           <input type="radio" name="110" id="110_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -219,12 +216,12 @@
           <textarea  name="110d" id="110_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="110m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="110m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">12 4 Epicondylus radialis/ulnaris druckschmerzhaft</td>
+        <td class="titel"> 4 Epicondylus radialis/ulnaris druckschmerzhaft</td>
         <td class="inhalt">
           <input type="radio" name="120" id="120_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -235,7 +232,7 @@
           <textarea  name="120d" id="120_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="120m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="120m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
       </tbody>
@@ -243,7 +240,7 @@
       <tbody>
       <tr>
         <td class="region" rowspan="4">&nbsp; Hand/Handgelenke</td>
-        <td class="titel">13 5 aktive/passive Beweglichkeit eingeschränkt</td>
+        <td class="titel"> 5 aktive/passive Beweglichkeit eingeschränkt</td>
         <td class="inhalt">
           <input type="radio" name="130" id="130_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -254,12 +251,12 @@
           <textarea  name="130d" id="130_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="130m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="130m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">14 6 Langfinger: Beuge-, Streck-, Spreizhemmung</td>
+        <td class="titel"> 6 Langfinger: Beuge-, Streck-, Spreizhemmung</td>
         <td class="inhalt">
           <input type="radio" name="140" id="140_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -270,12 +267,12 @@
           <textarea  name="140d" id="140_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="140m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="140m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">15 7 Daumen, Oppositionsbewegung behindert</td>
+        <td class="titel"> 7 Daumen, Oppositionsbewegung behindert</td>
         <td class="inhalt">
           <input type="radio" name="150" id="150_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -286,12 +283,12 @@
           <textarea  name="150d" id="150_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="150m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="150m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">16 8 Veränderungen an der Greifhaut</td>
+        <td class="titel"> 8 Veränderungen an der Greifhaut</td>
         <td class="inhalt">
           <input type="radio" name="160" id="160_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -302,7 +299,7 @@
           <textarea  name="160d" id="160_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="160m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="160m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
       </tbody>
@@ -310,7 +307,7 @@
       <tbody>
       <tr>
         <td class="region">&nbsp; Neurologie</td>
-        <td class="titel">17 9 Sensibilitätsverluste</td>
+        <td class="titel"> 9 Sensibilitätsverluste</td>
         <td class="inhalt">
           <input type="radio" name="170" id="170_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -321,7 +318,7 @@
           <textarea  name="170d" id="170_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="170m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="170m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
       </tbody>
@@ -339,7 +336,7 @@
       <tbody>
       <tr>
         <td class="region" rowspan="4">&nbsp; Wirbelsäule</td>
-        <td class="titel">18 1 klopfschmerzhaft</td>
+        <td class="titel"> 1 klopfschmerzhaft</td>
         <td class="inhalt">
           <input type="radio" name="180" id="180_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -350,12 +347,12 @@
           <textarea  name="180d" id="180_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="180m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="180m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">19 2 Reklination schmerzhaft</td>
+        <td class="titel"> 2 Reklination schmerzhaft</td>
         <td class="inhalt">
           <input type="radio" name="190" id="190_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -366,12 +363,12 @@
           <textarea  name="190d" id="190_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="190m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="190m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">20 3 Seitneigung schmerzhaft</td>
+        <td class="titel"> 3 Seitneigung schmerzhaft</td>
         <td class="inhalt">
           <input type="radio" name="200" id="200_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -382,12 +379,12 @@
           <textarea  name="200d" id="200_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="200m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="200m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">21 4 Finger-Boden-Abstand > 20 cm</td>
+        <td class="titel"> 4 Finger-Boden-Abstand > 20 cm</td>
         <td class="inhalt">
           <input type="radio" name="210" id="210_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -398,7 +395,7 @@
           <textarea  name="210d" id="210_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="210m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="210m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
       </tbody>
@@ -406,7 +403,7 @@
       <tbody>
       <tr>
         <td class="region" rowspan="3">&nbsp; Hüfte</td>
-        <td class="titel">22 5 Hüftbeweglichkeit eingeschränkt</td>
+        <td class="titel"> 5 Hüftbeweglichkeit eingeschränkt</td>
         <td class="inhalt">
           <input type="radio" name="220" id="220_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -417,12 +414,12 @@
           <textarea  name="220d" id="220_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="220m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="220m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">23 6 Aufrichten aus der Hocke unsicher</td>
+        <td class="titel"> 6 Aufrichten aus der Hocke unsicher</td>
         <td class="inhalt">
           <input type="radio" name="230" id="230_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -433,12 +430,12 @@
           <textarea  name="230d" id="230_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="230m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="230m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">24 7 Einbeinstand unmöglich oder unsicher</td>
+        <td class="titel"> 7 Einbeinstand unmöglich oder unsicher</td>
         <td class="inhalt">
           <input type="radio" name="240" id="240_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -449,7 +446,7 @@
           <textarea  name="240d" id="240_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="240m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="240m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
       </tbody>
@@ -457,7 +454,7 @@
       <tbody>
       <tr>
         <td class="region" rowspan="3">&nbsp; Knie</td>
-        <td class="titel">25 8 Kniebeweglichkeit eingeschränkt</td>
+        <td class="titel"> 8 Kniebeweglichkeit eingeschränkt</td>
         <td class="inhalt">
           <input type="radio" name="250" id="250_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -468,12 +465,12 @@
           <textarea  name="250d" id="250_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="250m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="250m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">26 9 Patella-Reibegeräusche, Druckschmerz</td>
+        <td class="titel"> 9 Patella-Reibegeräusche, Druckschmerz</td>
         <td class="inhalt">
           <input type="radio" name="260" id="260_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -484,12 +481,12 @@
           <textarea  name="260d" id="260_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="260m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="260m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">27 10 Kniekontur verstrichen, Erguss</td>
+        <td class="titel"> 10 Kniekontur verstrichen, Erguss</td>
         <td class="inhalt">
           <input type="radio" name="270" id="270_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -500,7 +497,7 @@
           <textarea  name="270d" id="270_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="270m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="270m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
       </tbody>
@@ -508,7 +505,7 @@
       <tbody>
       <tr>
         <td class="region">&nbsp; Fuß</td>
-        <td class="titel">28 11 oberes Sprunggelenk: aktive Beweglichkeit eingeschränkt</td>
+        <td class="titel"> 11 oberes Sprunggelenk: aktive Beweglichkeit eingeschränkt</td>
         <td class="inhalt">
           <input type="radio" name="280" id="280_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -519,7 +516,7 @@
           <textarea  name="280d" id="280_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="280m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="280m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
       </tbody>
@@ -527,7 +524,7 @@
       <tbody>
       <tr>
         <td class="region">&nbsp; Neurologie</td>
-        <td class="titel">29 12 Sensibilitätsverluste</td>
+        <td class="titel"> 12 Sensibilitätsverluste</td>
         <td class="inhalt">
           <input type="radio" name="290" id="290_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -538,7 +535,7 @@
           <textarea  name="290d" id="290_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="290m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="290m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
       </tbody>
@@ -556,7 +553,7 @@
       <tbody>
       <tr>
         <td class="region" rowspan="3">&nbsp; Inspektion allgemein</td>
-        <td class="titel">30 1 Hinken, nicht schmerzbedingt</td>
+        <td class="titel"> 1 Hinken, nicht schmerzbedingt</td>
         <td class="inhalt">
           <input type="radio" name="300" id="300_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -572,16 +569,14 @@
           R: <textarea name="301d" id="301_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="300m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="300m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
           <br>
-          <br>
-          <br>
-          <i class="fa fa-microphone" id="301m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="301m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">31 2 Gelenkkontur mit Bewegungseinschränkung</td>
+        <td class="titel"> 2 Gelenkkontur mit Bewegungseinschränkung</td>
         <td class="inhalt">
           <input type="radio" name="310" id="310_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -597,16 +592,14 @@
           R: <textarea name="311d" id="311_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled ></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="310m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="310m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
           <br>
-          <br>
-          <br>
-          <i class="fa fa-microphone" id="311m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="311m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">32 3 Kontrakturen (Narben, myogen, neurogen)</td>
+        <td class="titel"> 3 Kontrakturen (Narben, myogen, neurogen)</td>
         <td class="inhalt">
           <input type="radio" name="320" id="320_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -622,11 +615,9 @@
           R: <textarea name="321d" id="321_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="320m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="320m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
           <br>
-          <br>
-          <br>
-          <i class="fa fa-microphone" id="321m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="321m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
       </tbody>
@@ -634,7 +625,7 @@
       <tbody>
       <tr>
         <td class="region" rowspan="2">&nbsp; Inspektion des Schultergürtels</td>
-        <td class="titel">33 4 Schultertiefstand</td>
+        <td class="titel"> 4 Schultertiefstand</td>
         <td class="inhalt">
           <input type="radio" name="330" id="330_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -650,16 +641,14 @@
           R: <textarea name="331d" id="331_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="330m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="330m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
           <br>
-          <br>
-          <br>
-          <i class="fa fa-microphone" id="331m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="331m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">34 5 Schultergürtel ungleich (Atrophien)</td>
+        <td class="titel"> 5 Schultergürtel ungleich (Atrophien)</td>
         <td class="inhalt">
           <input type="radio" name="340" id="340_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -675,11 +664,9 @@
           R: <textarea name="341d" id="341_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="340m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="340m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
           <br>
-          <br>
-          <br>
-          <i class="fa fa-microphone" id="341m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="341m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
       </tbody>
@@ -687,7 +674,7 @@
       <tbody>
       <tr>
         <td class="region" rowspan="7">&nbsp; Inspektion des Rückens</td>
-        <td class="titel">35 6 Rundrücken</td>
+        <td class="titel"> 6 Rundrücken</td>
         <td class="inhalt">
           <input type="radio" name="350" id="350_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -698,12 +685,12 @@
           <textarea  name="350d" id="350_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="350m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="350m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">36 7 Hohlrund-Rücken</td>
+        <td class="titel"> 7 Hohlrund-Rücken</td>
         <td class="inhalt">
           <input type="radio" name="360" id="360_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -714,12 +701,12 @@
           <textarea  name="360d" id="360_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="360m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="360m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">37 8 Flachrücken</td>
+        <td class="titel"> 8 Flachrücken</td>
         <td class="inhalt">
           <input type="radio" name="370" id="370_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -730,12 +717,12 @@
           <textarea  name="370d" id="370_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="370m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="370m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">38 9 einseitige Rumpfabweichung</td>
+        <td class="titel"> 9 einseitige Rumpfabweichung</td>
         <td class="inhalt">
           <input type="radio" name="380" id="380_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -751,16 +738,14 @@
           R: <textarea name="381d" id="381_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="380m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="380m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
           <br>
-          <br>
-          <br>
-          <i class="fa fa-microphone" id="381m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="381m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">39 10 Taillendreiecke ungleich</td>
+        <td class="titel"> 10 Taillendreiecke ungleich</td>
         <td class="inhalt">
           <input type="radio" name="390" id="390_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -776,16 +761,14 @@
           R: <textarea name="391d" id="391_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="390m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="390m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
           <br>
-          <br>
-          <br>
-          <i class="fa fa-microphone" id="391m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="391m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">40 11 Michaelis-Raute asymmetrisch</td>
+        <td class="titel"> 11 Michaelis-Raute asymmetrisch</td>
         <td class="inhalt">
           <input type="radio" name="400" id="400_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -801,16 +784,14 @@
           R: <textarea name="401d" id="401_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="400m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="400m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
           <br>
-          <br>
-          <br>
-          <i class="fa fa-microphone" id="401m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="401m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">41 12 Haltung, sonstiges</td>
+        <td class="titel"> 12 Haltung, sonstiges</td>
         <td class="inhalt">
           <input type="radio" name="410" id="410_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -826,11 +807,9 @@
           R: <textarea name="411d" id="411_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="410m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="410m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
           <br>
-          <br>
-          <br>
-          <i class="fa fa-microphone" id="411m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="411m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
       </tbody>
@@ -838,7 +817,7 @@
       <tbody>
       <tr>
         <td class="region">&nbsp; Inspektion der unteren Extremitäten</td>
-        <td class="titel">42 13 Beinlänge ungleich</td>
+        <td class="titel"> 13 Beinlänge ungleich</td>
         <td class="inhalt">
           <input type="radio" name="420" id="420_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -854,11 +833,9 @@
           R: <textarea name="421d" id="421_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="420m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="420m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
           <br>
-          <br>
-          <br>
-          <i class="fa fa-microphone" id="421m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="421m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
       </tbody>
@@ -876,7 +853,7 @@
       <tbody>
       <tr>
         <td class="region" rowspan="7">&nbsp; HWS</td>
-        <td class="titel">43 1 passive HWS-Beweglichkeit eingeschränkt</td>
+        <td class="titel"> 1 passive HWS-Beweglichkeit eingeschränkt</td>
         <td class="inhalt">
           <input type="radio" name="430" id="430_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -892,16 +869,14 @@
           R: <textarea name="431d" id="431_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="430m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="430m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
           <br>
-          <br>
-          <br>
-          <i class="fa fa-microphone" id="431m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="431m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">44 2 passive Inklination, Reklination der HWS reduziert</td>
+        <td class="titel"> 2 passive Inklination, Reklination der HWS reduziert</td>
         <td class="inhalt">
           <input type="radio" name="440" id="440_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -912,12 +887,12 @@
           <textarea  name="440d" id="440_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="440m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="440m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">45 3 passive Seitneigung der HWS vermindert</td>
+        <td class="titel"> 3 passive Seitneigung der HWS vermindert</td>
         <td class="inhalt">
           <input type="radio" name="450" id="450_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -933,16 +908,14 @@
           R: <textarea name="451d" id="451_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="450m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="450m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
           <br>
-          <br>
-          <br>
-          <i class="fa fa-microphone" id="451m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="451m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">46 4 passive Rotation eingeschränkt in Inklination</td>
+        <td class="titel"> 4 passive Rotation eingeschränkt in Inklination</td>
         <td class="inhalt">
           <input type="radio" name="460" id="460_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -958,16 +931,14 @@
           R: <textarea name="461d" id="461_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="460m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="460m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
           <br>
-          <br>
-          <br>
-          <i class="fa fa-microphone" id="461m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="461m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">47 5 passive Rotation eingeschränkt in Reklination</td>
+        <td class="titel"> 5 passive Rotation eingeschränkt in Reklination</td>
         <td class="inhalt">
           <input type="radio" name="470" id="470_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -983,16 +954,14 @@
           R: <textarea name="471d" id="471_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="470m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="470m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
           <br>
-          <br>
-          <br>
-          <i class="fa fa-microphone" id="471m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="471m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">48 6 Nackenmuskulatur palpatorisch verspannt</td>
+        <td class="titel"> 6 Nackenmuskulatur palpatorisch verspannt</td>
         <td class="inhalt">
           <input type="radio" name="480" id="480_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -1008,16 +977,14 @@
           R: <textarea name="481d" id="481_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="480m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="480m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
           <br>
-          <br>
-          <br>
-          <i class="fa fa-microphone" id="481m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="481m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">49 7 Perkussion der HWS schmerzhaft</td>
+        <td class="titel"> 7 Perkussion der HWS schmerzhaft</td>
         <td class="inhalt">
           <input type="radio" name="490" id="490_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -1028,7 +995,7 @@
           <textarea  name="490d" id="490_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="490m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="490m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
       </tbody>
@@ -1036,7 +1003,7 @@
       <tbody>
       <tr>
         <td class="region" rowspan="3">&nbsp; Schulter</td>
-        <td class="titel">50 8 Schulter überwärmt</td>
+        <td class="titel"> 8 Schulter überwärmt</td>
         <td class="inhalt">
           <input type="radio" name="500" id="500_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -1052,16 +1019,14 @@
           R: <textarea name="501d" id="501_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="500m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="500m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
           <br>
-          <br>
-          <br>
-          <i class="fa fa-microphone" id="501m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="501m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">51 9 Schmerzhafter Bogen „painful arc“</td>
+        <td class="titel"> 9 Schmerzhafter Bogen „painful arc“</td>
         <td class="inhalt">
           <input type="radio" name="510" id="510_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -1077,16 +1042,14 @@
           R: <textarea name="511d" id="511_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="510m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="510m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
           <br>
-          <br>
-          <br>
-          <i class="fa fa-microphone" id="511m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="511m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">52 10 aktive Abduktion des Arms nicht möglich</td>
+        <td class="titel"> 10 aktive Abduktion des Arms nicht möglich</td>
         <td class="inhalt">
           <input type="radio" name="520" id="520_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -1102,11 +1065,9 @@
           R: <textarea name="521d" id="521_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="520m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="520m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
           <br>
-          <br>
-          <br>
-          <i class="fa fa-microphone" id="521m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="521m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
       </tbody>
@@ -1114,7 +1075,7 @@
       <tbody>
       <tr>
         <td class="region" rowspan="4">&nbsp; Ellenbogen</td>
-        <td class="titel">53 11 Olecranonspitze druckschmerzhaft</td>
+        <td class="titel"> 11 Olecranonspitze druckschmerzhaft</td>
         <td class="inhalt">
           <input type="radio" name="530" id="530_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -1130,16 +1091,14 @@
           R: <textarea name="531d" id="531_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="530m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="530m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
           <br>
-          <br>
-          <br>
-          <i class="fa fa-microphone" id="531m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="531m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">54 12 Sulcus ulnaris druckschmerzhaft</td>
+        <td class="titel"> 12 Sulcus ulnaris druckschmerzhaft</td>
         <td class="inhalt">
           <input type="radio" name="540" id="540_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -1155,16 +1114,14 @@
           R: <textarea name="541d" id="541_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="540m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="540m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
           <br>
-          <br>
-          <br>
-          <i class="fa fa-microphone" id="541m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="541m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">55 13 Radiusköpfchen druckschmerzhaft</td>
+        <td class="titel"> 13 Radiusköpfchen druckschmerzhaft</td>
         <td class="inhalt">
           <input type="radio" name="550" id="550_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -1180,16 +1137,14 @@
           R: <textarea name="551d" id="551_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="550m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="550m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
           <br>
-          <br>
-          <br>
-          <i class="fa fa-microphone" id="551m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="551m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">56 14 Pronation über 45° behindert</td>
+        <td class="titel"> 14 Pronation über 45° behindert</td>
         <td class="inhalt">
           <input type="radio" name="560" id="560_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -1205,11 +1160,9 @@
           R: <textarea name="561d" id="561_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="560m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="560m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
           <br>
-          <br>
-          <br>
-          <i class="fa fa-microphone" id="561m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="561m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
       </tbody>
@@ -1217,7 +1170,7 @@
       <tbody>
       <tr>
         <td class="region" rowspan="8">&nbsp; Hand/Handgelenke</td>
-        <td class="titel">57 15 Druckschmerz über Retinaculum extensorum</td>
+        <td class="titel"> 15 Druckschmerz über Retinaculum extensorum</td>
         <td class="inhalt">
           <input type="radio" name="570" id="570_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -1233,16 +1186,14 @@
           R: <textarea name="571d" id="571_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="570m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="570m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
           <br>
-          <br>
-          <br>
-          <i class="fa fa-microphone" id="571m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="571m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">58 16 Druckschmerz über Retinaculum flexorum</td>
+        <td class="titel"> 16 Druckschmerz über Retinaculum flexorum</td>
         <td class="inhalt">
           <input type="radio" name="580" id="580_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -1258,16 +1209,14 @@
           R: <textarea name="581d" id="581_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="580m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="580m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
           <br>
-          <br>
-          <br>
-          <i class="fa fa-microphone" id="581m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="581m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">59 17 Tinel-Zeichen positiv</td>
+        <td class="titel"> 17 Tinel-Zeichen positiv</td>
         <td class="inhalt">
           <input type="radio" name="590" id="590_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -1283,16 +1232,14 @@
           R: <textarea name="591d" id="591_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="590m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="590m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
           <br>
-          <br>
-          <br>
-          <i class="fa fa-microphone" id="591m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="591m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">60 18 Händedruck, grobe Kraft vermindert</td>
+        <td class="titel"> 18 Händedruck, grobe Kraft vermindert</td>
         <td class="inhalt">
           <input type="radio" name="600" id="600_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -1308,16 +1255,14 @@
           R: <textarea name="601d" id="601_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="600m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="600m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
           <br>
-          <br>
-          <br>
-          <i class="fa fa-microphone" id="601m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="601m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">61 19 Spitzgriff behindert</td>
+        <td class="titel"> 19 Spitzgriff behindert</td>
         <td class="inhalt">
           <input type="radio" name="610" id="610_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -1333,16 +1278,14 @@
           R: <textarea name="611d" id="611_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="610m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="610m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
           <br>
-          <br>
-          <br>
-          <i class="fa fa-microphone" id="611m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="611m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">62 20 Zangengriff behindert</td>
+        <td class="titel"> 20 Zangengriff behindert</td>
         <td class="inhalt">
           <input type="radio" name="620" id="620_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -1358,16 +1301,14 @@
           R: <textarea name="621d" id="621_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="620m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="620m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
           <br>
-          <br>
-          <br>
-          <i class="fa fa-microphone" id="621m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="621m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">63 21 Schlüsselgriff behindert</td>
+        <td class="titel"> 21 Schlüsselgriff behindert</td>
         <td class="inhalt">
           <input type="radio" name="630" id="630_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -1383,16 +1324,14 @@
           R: <textarea name="631d" id="631_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="630m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="630m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
           <br>
-          <br>
-          <br>
-          <i class="fa fa-microphone" id="631m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="631m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">64 22 Palmarerythem/Kontraktur der Palmarfaszie</td>
+        <td class="titel"> 22 Palmarerythem/Kontraktur der Palmarfaszie</td>
         <td class="inhalt">
           <input type="radio" name="640" id="640_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -1408,11 +1347,9 @@
           R: <textarea name="641d" id="641_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="640m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="640m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
           <br>
-          <br>
-          <br>
-          <i class="fa fa-microphone" id="641m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="641m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
       </tbody>
@@ -1420,7 +1357,7 @@
       <tbody>
       <tr>
         <td class="region">&nbsp; Neurologie</td>
-        <td class="titel">65 23 Muskeleigenreflexe BSR, TSR, RPR vermindert/seitendifferent</td>
+        <td class="titel"> 23 Muskeleigenreflexe BSR, TSR, RPR vermindert/seitendifferent</td>
         <td class="inhalt">
           <input type="radio" name="650" id="650_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -1436,11 +1373,9 @@
           R: <textarea name="651d" id="651_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="650m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="650m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
           <br>
-          <br>
-          <br>
-          <i class="fa fa-microphone" id="651m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="651m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
       </tbody>
@@ -1457,7 +1392,7 @@
       <tbody>
       <tr>
         <td class="region" rowspan="4">&nbsp; LWS/ISG</td>
-        <td class="titel">66 1 paraspinaler Druckschmerz, Myogelosen</td>
+        <td class="titel"> 1 paraspinaler Druckschmerz, Myogelosen</td>
         <td class="inhalt">
           <input type="radio" name="660" id="660_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -1473,16 +1408,14 @@
           R: <textarea name="661d" id="661_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="660m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="660m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
           <br>
-          <br>
-          <br>
-          <i class="fa fa-microphone" id="661m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="661m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">67 2 Ott´sches Maß nicht normwertig</td>
+        <td class="titel"> 2 Ott´sches Maß nicht normwertig</td>
         <td class="inhalt">
           <input type="radio" name="670" id="670_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -1493,12 +1426,12 @@
           <textarea  name="670d" id="670_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="670m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="670m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">68 3 Schober´sches Maß nicht normwertig</td>
+        <td class="titel"> 3 Schober´sches Maß nicht normwertig</td>
         <td class="inhalt">
           <input type="radio" name="680" id="680_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -1509,12 +1442,12 @@
           <textarea  name="680d" id="680_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="680m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="680m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">69 4 Haltungstest nach Matthiass</td>
+        <td class="titel"> 4 Haltungstest nach Matthiass</td>
         <td class="inhalt">
           <input type="radio" name="690" id="690_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -1525,7 +1458,7 @@
           <textarea  name="690d" id="690_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="690m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="690m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
       </tbody>
@@ -1533,7 +1466,7 @@
       <tbody>
       <tr>
         <td class="region" rowspan="3">&nbsp; Hüftgelenke</td>
-        <td class="titel">70 5 Thomas-Handgriff, Hüftbeugekontraktur</td>
+        <td class="titel"> 5 Thomas-Handgriff, Hüftbeugekontraktur</td>
         <td class="inhalt">
           <input type="radio" name="700" id="700_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -1549,16 +1482,14 @@
           R: <textarea name="701d" id="701_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="700m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="700m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
           <br>
-          <br>
-          <br>
-          <i class="fa fa-microphone" id="701m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="701m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">71 6 Viererzeichen positiv</td>
+        <td class="titel"> 6 Viererzeichen positiv</td>
         <td class="inhalt">
           <input type="radio" name="710" id="710_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -1574,16 +1505,14 @@
           R: <textarea name="711d" id="711_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="710m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="710m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
           <br>
-          <br>
-          <br>
-          <i class="fa fa-microphone" id="711m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="711m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">72 7 Dreistufenhyperextensionstest positiv</td>
+        <td class="titel"> 7 Dreistufenhyperextensionstest positiv</td>
         <td class="inhalt">
           <input type="radio" name="720" id="720_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -1599,11 +1528,9 @@
           R: <textarea name="721d" id="721_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="720m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="720m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
           <br>
-          <br>
-          <br>
-          <i class="fa fa-microphone" id="721m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="721m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
       </tbody>
@@ -1611,7 +1538,7 @@
       <tbody>
       <tr>
         <td class="region" rowspan="8">&nbsp; Knie</td>
-        <td class="titel">73 8 Zohlenzeichen positiv</td>
+        <td class="titel"> 8 Zohlenzeichen positiv</td>
         <td class="inhalt">
           <input type="radio" name="730" id="730_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -1627,16 +1554,14 @@
           R: <textarea name="731d" id="731_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="730m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="730m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
           <br>
-          <br>
-          <br>
-          <i class="fa fa-microphone" id="731m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="731m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">74 9 Streckdefizit des Kniegelenks</td>
+        <td class="titel"> 9 Streckdefizit des Kniegelenks</td>
         <td class="inhalt">
           <input type="radio" name="740" id="740_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -1652,16 +1577,14 @@
           R: <textarea name="741d" id="741_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="740m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="740m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
           <br>
-          <br>
-          <br>
-          <i class="fa fa-microphone" id="741m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="741m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">75 10 Beugedefizit des Kniegelenks</td>
+        <td class="titel"> 10 Beugedefizit des Kniegelenks</td>
         <td class="inhalt">
           <input type="radio" name="750" id="750_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -1677,16 +1600,14 @@
           R: <textarea name="751d" id="751_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="750m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="750m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
           <br>
-          <br>
-          <br>
-          <i class="fa fa-microphone" id="751m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="751m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">76 11 laterale Aufklappbarkeit des Kniegelenks</td>
+        <td class="titel"> 11 laterale Aufklappbarkeit des Kniegelenks</td>
         <td class="inhalt">
           <input type="radio" name="760" id="760_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -1702,16 +1623,14 @@
           R: <textarea name="761d" id="761_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="760m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="760m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
           <br>
-          <br>
-          <br>
-          <i class="fa fa-microphone" id="761m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="761m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">77 12 mediale Aufklappbarkeit des Kniegelenks</td>
+        <td class="titel"> 12 mediale Aufklappbarkeit des Kniegelenks</td>
         <td class="inhalt">
           <input type="radio" name="770" id="770_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -1727,16 +1646,14 @@
           R: <textarea name="771d" id="771_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="770m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="770m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
           <br>
-          <br>
-          <br>
-          <i class="fa fa-microphone" id="771m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="771m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">78 13 Böhler-Zeichen positiv</td>
+        <td class="titel"> 13 Böhler-Zeichen positiv</td>
         <td class="inhalt">
           <input type="radio" name="780" id="780_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -1752,16 +1669,14 @@
           R: <textarea name="781d" id="781_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="780m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="780m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
           <br>
-          <br>
-          <br>
-          <i class="fa fa-microphone" id="781m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="781m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">79 14 Apley-Grinding positiv</td>
+        <td class="titel"> 14 Apley-Grinding positiv</td>
         <td class="inhalt">
           <input type="radio" name="790" id="790_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -1777,16 +1692,14 @@
           R: <textarea name="791d" id="791_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="790m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="790m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
           <br>
-          <br>
-          <br>
-          <i class="fa fa-microphone" id="791m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="791m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">80 15 Payr-Zeichen positiv</td>
+        <td class="titel"> 15 Payr-Zeichen positiv</td>
         <td class="inhalt">
           <input type="radio" name="800" id="800_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -1802,11 +1715,9 @@
           R: <textarea name="801d" id="801_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="800m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="800m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
           <br>
-          <br>
-          <br>
-          <i class="fa fa-microphone" id="801m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="801m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
       </tbody>
@@ -1814,7 +1725,7 @@
       <tbody>
       <tr>
         <td class="region" rowspan="2">&nbsp; Fuß/OSG</td>
-        <td class="titel">81 16 passive Bewegung im OSG schmerzhaft</td>
+        <td class="titel"> 16 passive Bewegung im OSG schmerzhaft</td>
         <td class="inhalt">
           <input type="radio" name="810" id="810_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -1830,16 +1741,14 @@
           R: <textarea name="811d" id="811_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="810m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="810m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
           <br>
-          <br>
-          <br>
-          <i class="fa fa-microphone" id="811m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="811m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">82 17 Vorfußkompression schmerzhaft</td>
+        <td class="titel"> 17 Vorfußkompression schmerzhaft</td>
         <td class="inhalt">
           <input type="radio" name="820" id="820_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -1855,11 +1764,9 @@
           R: <textarea name="821d" id="821_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="820m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="820m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
           <br>
-          <br>
-          <br>
-          <i class="fa fa-microphone" id="821m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="821m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
       </tbody>
@@ -1867,7 +1774,7 @@
       <tbody>
       <tr>
         <td class="region" rowspan="6">&nbsp; Neurologie</td>
-        <td class="titel">83 18 Fersenstand, -gang eingeschränkt</td>
+        <td class="titel"> 18 Fersenstand, -gang eingeschränkt</td>
         <td class="inhalt">
           <input type="radio" name="830" id="830_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -1883,16 +1790,14 @@
           R: <textarea name="831d" id="831_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="830m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="830m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
           <br>
-          <br>
-          <br>
-          <i class="fa fa-microphone" id="831m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="831m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">84 19 Zehenstand, -gang eingeschränkt</td>
+        <td class="titel"> 19 Zehenstand, -gang eingeschränkt</td>
         <td class="inhalt">
           <input type="radio" name="840" id="840_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -1908,16 +1813,14 @@
           R: <textarea name="841d" id="841_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="840m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="840m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
           <br>
-          <br>
-          <br>
-          <i class="fa fa-microphone" id="841m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="841m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">85 20 Trendelenburg-/Duchenne-Zeichen</td>
+        <td class="titel"> 20 Trendelenburg-/Duchenne-Zeichen</td>
         <td class="inhalt">
           <input type="radio" name="850" id="850_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -1933,16 +1836,14 @@
           R: <textarea name="851d" id="851_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="850m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="850m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
           <br>
-          <br>
-          <br>
-          <i class="fa fa-microphone" id="851m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="851m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">86 21 Muskeleigenreflexe PSR, ASR vermindert seitendifferent</td>
+        <td class="titel"> 21 Muskeleigenreflexe PSR, ASR vermindert seitendifferent</td>
         <td class="inhalt">
           <input type="radio" name="860" id="860_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -1958,16 +1859,14 @@
           R: <textarea name="861d" id="861_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="860m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="860m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
           <br>
-          <br>
-          <br>
-          <i class="fa fa-microphone" id="861m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="861m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">87 22 Femoralis-Dehnungsschmerz</td>
+        <td class="titel"> 22 Femoralis-Dehnungsschmerz</td>
         <td class="inhalt">
           <input type="radio" name="870" id="870_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -1983,16 +1882,14 @@
           R: <textarea name="871d" id="871_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="870m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="870m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
           <br>
-          <br>
-          <br>
-          <i class="fa fa-microphone" id="871m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="871m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
 
       <tr>
-        <td class="titel">88 23 Lasèque-Zeichen/Bragard-Zeichen positiv</td>
+        <td class="titel"> 23 Lasèque-Zeichen/Bragard-Zeichen positiv</td>
         <td class="inhalt">
           <input type="radio" name="880" id="880_unnotice" value="unnotice" onchange="fetch_radio(this.name, this.value)">
         </td>
@@ -2008,11 +1905,9 @@
           R: <textarea name="881d" id="881_description" cols="40" onkeyup="textAreaAdjust(this)" style="overflow:hidden" onchange="fetch_textArea(this.name, this.value)" disabled></textarea>
         </td>
         <td class="micro">
-          <i class="fa fa-microphone" id="880m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="880m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
           <br>
-          <br>
-          <br>
-          <i class="fa fa-microphone" id="881m" style="font-size:36px" onclick="aufnehmen(this)" title="not_recording"></i>
+          <img height="35" id="881m" title="disabled" src="{{ url_for('static', filename='microphone_off.svg') }}" style="opacity:0.5" onclick="aufnehmen(this)"/>
         </td>
       </tr>
       </tbody>
@@ -2037,8 +1932,9 @@
 
     <br>
     <p id="demo">You selected: </p>
+    <br>
     <div>
-      <a id="print_link" href=" {{url_for('blog.printing')}}"><input type="button" id="print" value="Print"></a>
+      <a id="print_link" href=" {{url_for('blog.printing')}}"><input type="button" id="print" style="height:50px"  value="Befund exportieren"></a>
     </div>
     <br>
 

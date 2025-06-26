@@ -39,22 +39,62 @@ def logout():
 def printing():
     global file_path
     file_path =  os.path.dirname(os.path.realpath(__file__))+'/'+"demofile.txt"
-    with open(file_path, "w") as f:
-        e3 = ''
-        e4 = ''
-        for key,value in output.items():
-            if 'out' in key and value!= '':
-                if 'e3' in key and value!= '':
-                    e3 = value
-                elif 'e4' in key and value!= '':
-                    e4 = value
-                else:
-                    f.write(value+ '\n')
+    print(os.path.join(os.environ["USERPROFILE"], "Desktop"))
+    file_path = os.path.join(os.environ["USERPROFILE"], "Desktop", "demofile.txt")
+    print(file_path)
+    try:
+        with open(file_path, "w") as f:
+            e3 = ''
+            e4 = ''
+            for key,value in output.items():
+                if 'out' in key and value!= '':
+                    if 'e3' in key and value!= '':
+                        e3 = value
+                    elif 'e4' in key and value!= '':
+                        e4 = value
+                    else:
+                        f.write(value+ '\n')
 
-        if e3 != '' :
-            f.write(e3 + '\n')
-        if e4 != '':
-            f.write(e4 + '\n')
+            if e3 != '' :
+                f.write(e3 + '\n')
+            if e4 != '':
+                f.write(e4 + '\n')
+    except FileNotFoundError:
+        file_path = os.path.join(os.environ["USERPROFILE"],"OneDrive", "Desktop", "demofile.txt")
+        with open(file_path, "w") as f:
+            e3 = ''
+            e4 = ''
+            for key, value in output.items():
+                if 'out' in key and value != '':
+                    if 'e3' in key and value != '':
+                        e3 = value
+                    elif 'e4' in key and value != '':
+                        e4 = value
+                    else:
+                        f.write(value + '\n')
+
+            if e3 != '':
+                f.write(e3 + '\n')
+            if e4 != '':
+                f.write(e4 + '\n')
+    except:
+        file_path = os.path.dirname(os.path.realpath(__file__)) + '/' + "Befund.txt"
+        with open(file_path, "w") as f:
+            e3 = ''
+            e4 = ''
+            for key, value in output.items():
+                if 'out' in key and value != '':
+                    if 'e3' in key and value != '':
+                        e3 = value
+                    elif 'e4' in key and value != '':
+                        e4 = value
+                    else:
+                        f.write(value + '\n')
+
+            if e3 != '':
+                f.write(e3 + '\n')
+            if e4 != '':
+                f.write(e4 + '\n')
 
 
     flash(f'Datei wurde unter {file_path} gespeichert')
@@ -126,6 +166,7 @@ def create():
 @bp.route('/process',  methods=(['POST']))
 def process():
     global output
+    print('process start')
 
     if request.method == 'POST':
 
@@ -140,15 +181,26 @@ def process():
             output[name+'out'] =  ''
         else: #textarea, name=xxxd
             name = name.strip('d') #name = xxx
-            output[name+'out'] = value
+            print("value "+ value)
             if value != '' :
-                session[name] = value
+                value = value.strip()
+                print("stripped value "+ value)
+                if not (value.endswith('.') or value.endswith('!') or value.endswith('?')):
+                    print("doesnt end with Satzzeichen " + value)
+                    value+= '.'
 
+                print("with Satzzeichen " + value)
+                session[name] = value
+            print("hoffentlich with Satzzeichen " + value)
+            output[name+'out'] = value
+
+    print('process stop')
     return {"output": output}
 
 
 def callback(recognizer, audio):
     # received audio data, now we'll recognize it using Google Speech Recognition
+    print('callback start')
     try:
         recognized = recognizer.recognize_google(audio, language="de-DE")
         print("Google Speech Recognition thinks you said1 " + recognized)
@@ -163,16 +215,23 @@ def callback(recognizer, audio):
         out = ""
 
     global output2
-    output2 += out
+    if output2 == '':
+        output2 += out
+    else:
+        output2 += ' '+ out
+    print('callback end')
+
 
 
 @bp.route("/detect", methods=["POST"])
 def detect():
+    print('detect start')
     global stop
     global output2
     stop(wait_for_stop=False)
     returning = output2
     output2 = ''
+    print('detect end')
     return {"output2": returning}
 
 
